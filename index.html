@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <title>Bulb Lights ON/OFF</title>
+      <style>
+         * {
+            margin: 0;
+            padding: 0;
+         }
+         .container {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: center;
+            transition: background-color 0.5s;
+         }
+
+         button {
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            border: none;
+            background: rgb(255, 255, 255, 0.1);
+         }
+         button:hover {
+            color: #fefefe;
+            background: #858585;
+         }
+
+         .image-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+         }
+
+         img {
+            aspect-ratio: 1 / 1;
+            width: 20rem;
+            height: 20rem;
+         }
+
+         .bulbOFF {
+            display: none;
+            filter: drop-shadow(0 0 10px #000);
+         }
+
+         .bulbON {
+            filter: drop-shadow(0 0 10px #efff08);
+         }
+
+         .buttons-on-off {
+            margin-bottom: 20px;
+         }
+
+         #message {
+            font-size: 1.5rem;
+            font-weight: bold;
+         }
+      </style>
+   </head>
+
+   <body>
+      <div class="container">
+         <div class="image-container">
+            <img src="bulbON.png" alt="BulbON" class="bulbON" />
+            <img src="bulbOFF.png" alt="BulbOFF" class="bulbOFF" />
+         </div>
+         <div class="buttons-on-off">
+            <button id="on">On</button>
+            <button id="off">Off</button>
+         </div>
+         <div id="message"></div>
+      </div>
+
+      <script>
+         $(document).ready(function () {
+            $('#on').click(function () {
+               $('.bulbON').show();
+               $('.bulbOFF').hide();
+               $('.container').css('background-color', 'white');
+               $('#message').text('The bulb is ON').css('color', 'black');
+            });
+
+            $('#off').click(function () {
+               $('.bulbOFF').show();
+               $('.bulbON').hide();
+               $('.container').css('background-color', 'black');
+               $('#message').text('The bulb is OFF').css('color', 'white');
+            });
+         });
+      </script>
+   </body>
+</html>
